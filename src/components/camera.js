@@ -48,7 +48,7 @@ module.exports.Component = registerComponent('camera', {
     var el = this.el;
     var data = this.data;
     var camera = this.camera;
-    var system = this.system;
+    var system = el.sceneEl.systems['camera'];
 
     // Update height offset.
     this.addHeightOffset(oldData.userHeight);
@@ -63,7 +63,7 @@ module.exports.Component = registerComponent('camera', {
 
     // Active property did not change.
     if (oldData && oldData.active === data.active) { return; }
-
+    
     // If `active` property changes, or first update, handle active camera with system.
     if (data.active && system.activeCameraEl !== el) {
       // Camera enabled. Set camera to this camera.
